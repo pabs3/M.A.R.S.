@@ -13,3 +13,9 @@ ehthumbs.db
 Thumbs.db
 build
 obj
+CMakeCache.txt
+CMakeFiles
+CPackConfig.cmake
+CPackSourceConfig.cmake
+Makefile
+cmake_install.cmake
