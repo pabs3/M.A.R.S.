@@ -17,9 +17,6 @@ set(mars_PACKAGENAME "mars")
 # We require at least version 2.8.0
 cmake_minimum_required(VERSION 2.8.0)
 
-# Location where cmake first looks for modules.
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
-
 #####################################################################
 # Configure and find libraries
 #####################################################################
@@ -29,8 +26,10 @@ find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 # find the sfml2 headers and library
-find_package(SFML REQUIRED audio graphics window system)
-include_directories(${SFML_INCLUDE_DIR})
+include(FindPkgConfig)
+pkg_check_modules(SFML REQUIRED sfml-audio>=2.0 sfml-graphics>=2.0
+			sfml-window>=2.0 sfml-system>=2.0)
+include_directories(${SFML_INCLUDE_DIRS})
 
 # Foundation library needed for apple
 if(APPLE)
